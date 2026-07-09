@@ -27,11 +27,26 @@ The extension is loaded automatically.
 > [!WARNING]
 > The package is not yet available on Packagist. It will be release with the v1.0.0 once internal tests has been done.
 
-```bash
-composer require --dev knplabs/phpstan-rules
+During testing phase, install via VCS repository pointing at `dev-main`. Add repository to your `composer.json`:
+
+```json
+{
+    "repositories": [
+        {
+            "type": "vcs",
+            "url": "https://github.com/KnpLabs/phpstan-rules"
+        }
+    ]
+}
 ```
 
-Then include the extension in your `phpstan.neon`:
+Then require dev-main version:
+
+```bash
+composer require --dev knplabs/phpstan-rules:dev-main
+```
+
+If you don't use `phpstan/extension-installer`, include the extension in your `phpstan.neon`:
 
 ```neon
 includes:
