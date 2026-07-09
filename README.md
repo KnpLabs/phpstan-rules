@@ -24,6 +24,9 @@ The extension is loaded automatically.
 
 ### Manual configuration
 
+> [!WARNING]
+> The package is not yet available on Packagist. It will be release with the v1.0.0 once internal tests has been done.
+
 ```bash
 composer require --dev knplabs/phpstan-rules
 ```
