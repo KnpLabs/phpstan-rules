@@ -1,0 +1,43 @@
+parameters:
+	ignoreErrors:
+		-
+			message: '#^Avoid using new DateTime\(''now''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTime\(\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''now''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using time\(\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowTimeFunctions
+			count: 2
+			path: tests/Rules/Psr/fixtures/psr20_functions.php
+
+		-
+			message: '#^Avoid using date\(\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowTimeFunctions
+			count: 4
+			path: tests/Rules/Psr/fixtures/psr20_functions.php
+
+		-
+			message: '#^Parameter \#2 \$timestamp of function date expects int\|null, string given\.$#'
+			identifier: argument.type
+			count: 2
+			path: tests/Rules/Psr/fixtures/psr20_functions.php

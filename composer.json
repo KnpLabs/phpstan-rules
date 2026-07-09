@@ -1,0 +1,40 @@
+{
+    "name": "knplabs/phpstan-rules",
+    "description": "PHPStan rules shared across KnpLabs organization projects",
+    "type": "phpstan-extension",
+    "license": "MIT",
+    "require": {
+        "php": "^8.2",
+        "phpstan/phpstan": "^2.0"
+    },
+    "require-dev": {
+        "friendsofphp/php-cs-fixer": "^3.0",
+        "phpunit/phpunit": "^11.0"
+    },
+    "suggest": {
+        "phpstan/extension-installer": "For automatic extension loading"
+    },
+    "autoload": {
+        "psr-4": {
+            "KnpLabs\\PHPStan\\Rules\\": "src/Rules/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "KnpLabs\\PHPStan\\Rules\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "phpstan": {
+            "includes": [
+                "extension.neon"
+            ]
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "phpstan": "phpstan analyse",
+        "cs-fix": "php-cs-fixer fix",
+        "cs-check": "php-cs-fixer fix --dry-run --diff"
+    }
+}

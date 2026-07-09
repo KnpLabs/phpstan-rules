@@ -1,0 +1,9 @@
+parameters:
+    level: max
+    paths:
+        - src
+        - tests
+
+includes:
+    - extension.neon
+    - phpstan-baseline.neon

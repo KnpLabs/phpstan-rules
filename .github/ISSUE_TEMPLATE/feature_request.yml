@@ -1,0 +1,44 @@
+name: Feature Request
+description: Propose a new PHPStan rule
+labels: [enhancement]
+body:
+  - type: textarea
+    id: description
+    attributes:
+      label: What rule do you want?
+      description: Describe the coding pattern this rule should detect and why it matters.
+    validations:
+      required: true
+
+  - type: input
+    id: namespace
+    attributes:
+      label: Target namespace / PSR standard
+      description: Which PSR standard or namespace should this rule live under? (e.g. PSR-4, PSR-12)
+      placeholder: "PSR-4"
+    validations:
+      required: true
+
+  - type: textarea
+    id: bad-code
+    attributes:
+      label: Code that should trigger the rule
+      render: php
+    validations:
+      required: true
+
+  - type: textarea
+    id: good-code
+    attributes:
+      label: Code that should NOT trigger the rule
+      render: php
+    validations:
+      required: true
+
+  - type: textarea
+    id: additional
+    attributes:
+      label: Additional context
+      description: Edge cases, related rules, prior art in other PHPStan extensions, etc.
+    validations:
+      required: false

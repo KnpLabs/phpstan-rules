@@ -1,0 +1,63 @@
+name: Bug Report
+description: Report a rule producing incorrect results
+labels: [bug]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        Please provide a minimal reproducer. Prose alone is rarely enough to diagnose PHPStan rule issues.
+
+  - type: textarea
+    id: description
+    attributes:
+      label: What happened?
+      description: Describe the incorrect behavior (false positive, false negative, crash).
+    validations:
+      required: true
+
+  - type: textarea
+    id: reproducer
+    attributes:
+      label: Minimal reproducer
+      description: |
+        Paste the smallest PHP fixture that triggers the problem, and the PHPStan config (or inline rule config) used to run it.
+      placeholder: |
+        ```php
+        <?php
+        declare(strict_types=1);
+        // your fixture here
+        ```
+
+        ```neon
+        # phpstan.neon
+        includes:
+          - vendor/knplabs/phpstan-rules/extension.neon
+        parameters:
+          level: 5
+        ```
+    validations:
+      required: true
+
+  - type: input
+    id: php-version
+    attributes:
+      label: PHP version
+      placeholder: "8.2"
+    validations:
+      required: true
+
+  - type: input
+    id: phpstan-version
+    attributes:
+      label: PHPStan version
+      placeholder: "1.11.0"
+    validations:
+      required: true
+
+  - type: input
+    id: package-version
+    attributes:
+      label: knplabs/phpstan-rules version
+      placeholder: "1.0.0"
+    validations:
+      required: true

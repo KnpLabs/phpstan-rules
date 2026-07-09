@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+
+jobs:
+  tests:
+    name: PHP ${{ matrix.php }} — ${{ matrix.script }}
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        php: ['8.2', '8.3', '8.4', '8.5']
+        script: ['test', 'phpstan', 'cs-check']
+
+    env:
+        PHP_VERSION: ${{ matrix.php }}
+
+    steps:
+      - uses: actions/checkout@v7
+
+      - name: Set up PHP ${{ matrix.php }}
+        run: docker compose build php
+
+      - name: Get Composer Cache Directory
+        id: composer-cache
+        run: |
+            echo "dir=$(docker compose run --rm php composer config cache-files-dir)" >> $GITHUB_OUTPUT
+
+      - uses: actions/cache@v6
+        with:
+            path: ${{ steps.composer-cache.outputs.dir }}
+            key: ${{ runner.os }}-composer-${{ hashFiles('**/composer.lock') }}
+            restore-keys: |
+                ${{ runner.os }}-composer-
+
+      - name: Install dependencies
+        run: docker compose run --rm php composer install --no-interaction --prefer-dist
+
+      - name: Run ${{ matrix.script }}
+        run: docker compose run --rm php composer ${{ matrix.script }}

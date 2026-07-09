@@ -1,0 +1,9 @@
+services:
+    -
+        class: KnpLabs\PHPStan\Rules\Psr\Psr20Rule
+        tags:
+            - phpstan.rules.rule
+    -
+        class: KnpLabs\PHPStan\Rules\Psr\Psr20FunctionsRule
+        tags:
+            - phpstan.rules.rule

@@ -1,0 +1,10 @@
+---
+services:
+    php:
+        build:
+            context: .
+            dockerfile: Dockerfile
+            args:
+                PHP_VERSION: ${PHP_VERSION:-8.5}
+        volumes:
+            - ./:/opt/code
