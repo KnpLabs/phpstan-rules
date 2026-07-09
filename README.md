@@ -133,7 +133,7 @@ final class MyService
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the human contributor guide.
 
-If you are working with an AI agent (Claude Code), refer to [CLAUDE.md](CLAUDE.md) — it contains the AI-facing instructions for this repository.
+If you are working with an AI agent, refer to [AGENTS.md](AGENTS.md) — it contains the AI-facing instructions for this repository.
 
 ## License
 

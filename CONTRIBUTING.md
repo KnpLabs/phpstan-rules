@@ -115,7 +115,7 @@ CI runs `test`, `phpstan`, and `cs-check` against PHP 8.2, 8.3, 8.4, and 8.5. Al
 
 ## AI agents
 
-If you are contributing via an AI coding agent (Claude Code), refer to [CLAUDE.md](CLAUDE.md) — it contains the machine-readable instructions for this repository.
+If you are contributing via an AI coding agent, refer to [AGENTS.md](AGENTS.md) — it contains the machine-readable instructions for this repository.
 
 ## Code style
 
