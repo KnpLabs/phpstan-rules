@@ -92,6 +92,43 @@ final class MyService
 }
 ```
 
+### `clock.disallowTimeFunctions` — PSR-20 Clock Abstraction (functions)
+
+Enforces the [PSR-20](https://www.php-fig.org/psr/psr-20/) recommendation to avoid using `time()` or `date()` directly. This makes code that depends on the current time testable and respects the clock abstraction.
+
+**Triggers on:**
+
+```php
+$a = time();
+$b = date('Y-m-d');
+$c = date('Y-m-d', time());
+$d = date('Y-m-d', 'now');
+```
+
+**Does not trigger on** (explicit non-"now" timestamps are fine):
+
+```php
+$a = date('Y-m-d', 1672531200);
+$b = date('Y-m-d', $someTimestamp);
+```
+
+**Recommended fix:** inject `Psr\Clock\ClockInterface` and call `$clock->now()`:
+
+```php
+use Psr\Clock\ClockInterface;
+
+final class MyService
+{
+    public function __construct(private readonly ClockInterface $clock) {}
+
+    public function doSomething(): void
+    {
+        $now = $this->clock->now();
+        // ...
+    }
+}
+```
+
 ## Contributing
 
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the human contributor guide.
