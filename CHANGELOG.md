@@ -12,8 +12,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 * add GitHub Actions workflow for automated PHP releases ([c656aea](https://github.com/KnpLabs/phpstan-rules/commit/c656aea0e284ae832087759a5efe9de9662b0b3b))
 
-## [Unreleased]
-
 ## [0.0.1] — 2026-07-15
 
 ### Added
@@ -22,6 +20,4 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - `clock.disallowTimeFunctions` rule — prevents calling `time()` or `date()` without an explicit timestamp argument (PSR-20 compliance).
 - Automatic Packagist publishing on GitHub release via `publish.yml` workflow.
 - CI matrix across PHP 8.2, 8.3, 8.4, and 8.5.
-
-[Unreleased]: https://github.com/KnpLabs/phpstan-rules/compare/v0.0.1...HEAD
 [0.0.1]: https://github.com/KnpLabs/phpstan-rules/releases/tag/v0.0.1
