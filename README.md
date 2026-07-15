@@ -20,32 +20,6 @@ PHPStan rules shared across KnpLabs organization projects.
 composer require --dev knplabs/phpstan-rules phpstan/extension-installer
 ```
 
-The extension is loaded automatically.
-
-### Manual configuration
-
-> [!WARNING]
-> The package is not yet available on Packagist. It will be release with the v1.0.0 once internal tests has been done.
-
-During testing phase, install via VCS repository pointing at `dev-main`. Add repository to your `composer.json`:
-
-```json
-{
-    "repositories": [
-        {
-            "type": "vcs",
-            "url": "https://github.com/KnpLabs/phpstan-rules"
-        }
-    ]
-}
-```
-
-Then require dev-main version:
-
-```bash
-composer require --dev knplabs/phpstan-rules:dev-main
-```
-
 If you don't use `phpstan/extension-installer`, include the extension in your `phpstan.neon`:
 
 ```neon
@@ -134,6 +108,37 @@ final class MyService
 See [CONTRIBUTING.md](CONTRIBUTING.md) for the human contributor guide.
 
 If you are working with an AI agent, refer to [AGENTS.md](AGENTS.md) — it contains the AI-facing instructions for this repository.
+
+## Release & Publishing
+
+Releases are published to [Packagist](https://packagist.org/packages/knplabs/phpstan-rules) automatically when a GitHub release is created.
+
+### Prerequisites (one-time setup)
+
+1. **Register the package on Packagist** — submit the repository once at [packagist.org/packages/submit](https://packagist.org/packages/submit).
+
+2. **Add repository secrets** — in GitHub → Settings → Secrets and variables → Actions, create two repository secrets:
+
+   | Secret name | Value |
+   |-------------|-------|
+   | `PACKAGIST_USERNAME` | Your Packagist account username |
+   | `PACKAGIST_API_TOKEN` | An API token generated on your [Packagist profile page](https://packagist.org/profile/) |
+
+### Publishing a release
+
+1. Create a new release in GitHub (Releases → Draft a new release).
+2. Set the tag (e.g. `v1.2.0`), fill in the title and description, then click **Publish release**.
+3. The `Publish` workflow triggers automatically and notifies Packagist via its REST API.
+4. The new version appears on Packagist within a few minutes.
+
+> **Draft and pre-releases** — the workflow only fires on published releases. Saving a draft or marking a release as a pre-release does **not** trigger the automation.
+
+### Manual re-trigger
+
+If the workflow fails or you need to re-sync without creating a new release:
+
+1. Go to Actions → **Publish** → **Run workflow**.
+2. Click **Run workflow** (no inputs required).
 
 ## License
 
