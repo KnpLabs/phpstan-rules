@@ -3,6 +3,18 @@
     "description": "PHPStan rules shared across KnpLabs organization projects",
     "type": "phpstan-extension",
     "license": "MIT",
+    "keywords": ["php", "phpstan", "static-analysis", "rules", "good practice"],
+    "homepage": "https://github.com/KnpLabs/phpstan-rules",
+    "authors": [
+        {
+            "name": "KnpLabs",
+            "homepage": "https://knplabs.com"
+        }
+    ],
+    "support": {
+        "issues": "https://github.com/KnpLabs/phpstan-rules/issues",
+        "source": "https://github.com/KnpLabs/phpstan-rules"
+    },
     "require": {
         "php": "^8.2",
         "phpstan/phpstan": "^2.0"
