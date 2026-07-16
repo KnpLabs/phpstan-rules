@@ -111,7 +111,7 @@ If you are working with an AI agent, refer to [AGENTS.md](AGENTS.md) — it cont
 
 ## Release & Publishing
 
-Releases are published to [Packagist](https://packagist.org/packages/knplabs/phpstan-rules) automatically when a GitHub release is created.
+Releases are fully automated with [`release-please`](https://github.com/googleapis/release-please) and published to [Packagist](https://packagist.org/packages/knplabs/phpstan-rules) as soon as a GitHub release goes out.
 
 ### Prerequisites (one-time setup)
 
@@ -124,18 +124,18 @@ Releases are published to [Packagist](https://packagist.org/packages/knplabs/php
    | `PACKAGIST_USERNAME` | Your Packagist account username |
    | `PACKAGIST_API_TOKEN` | An API token generated on your [Packagist profile page](https://packagist.org/profile/) |
 
-### Publishing a release
+### How it works
 
-1. Create a new release in GitHub (Releases → Draft a new release).
-2. Set the tag (e.g. `v1.2.0`), fill in the title and description, then click **Publish release**.
-3. The `Publish` workflow triggers automatically and notifies Packagist via its REST API.
+1. **Every push to `main`** runs the `Release` workflow (`.github/workflows/release.yml`), which calls [`GoogleCloudPlatform/release-please-action`](https://github.com/GoogleCloudPlatform/release-please-action). It parses [Conventional Commits](https://www.conventionalcommits.org/) (`feat:`, `fix:`, `doc:`, etc.) since the last release and keeps a **release PR** up to date with the bumped version and generated `CHANGELOG.md` entry.
+2. **Merging the release PR** makes release-please tag the repository and publish the corresponding GitHub release automatically — no manual "Draft a new release" step is needed anymore.
+3. That GitHub release publish event triggers the `Publish` workflow, which notifies Packagist via its REST API.
 4. The new version appears on Packagist within a few minutes.
 
-> **Draft and pre-releases** — the workflow only fires on published releases. Saving a draft or marking a release as a pre-release does **not** trigger the automation.
+> **Commit messages matter** — release-please only picks up a version bump when commits follow the Conventional Commits format. Non-conforming commits are ignored when computing the next version.
 
 ### Manual re-trigger
 
-If the workflow fails or you need to re-sync without creating a new release:
+If the `Publish` workflow fails or you need to re-sync Packagist without creating a new release:
 
 1. Go to Actions → **Publish** → **Run workflow**.
 2. Click **Run workflow** (no inputs required).
