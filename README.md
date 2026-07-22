@@ -31,7 +31,7 @@ includes:
 
 ### `clock.disallowDateTimeNow` — PSR-20 Clock Abstraction
 
-Enforces the [PSR-20](https://www.php-fig.org/psr/psr-20/) recommendation to avoid instantiating `DateTime` or `DateTimeImmutable` with the current time directly. This makes code that depends on the current time testable and respects the clock abstraction.
+Enforces the [PSR-20](https://www.php-fig.org/psr/psr-20/) recommendation to avoid instantiating `DateTime` or `DateTimeImmutable` with a relative or implicit date. This makes code that depends on the current time testable and respects the clock abstraction.
 
 **Triggers on:**
 
@@ -40,13 +40,18 @@ $a = new DateTime();
 $b = new DateTime('now');
 $c = new DateTimeImmutable();
 $d = new DateTimeImmutable('now');
+$e = new DateTimeImmutable('yesterday');
+$f = new DateTimeImmutable('tomorrow');
+$g = new DateTime('+1 day');
+$h = new DateTimeImmutable('next Monday');
 ```
 
-**Does not trigger on** (explicit non-"now" timestamps are fine):
+**Does not trigger on** (absolute date strings and variables are allowed):
 
 ```php
 $a = new DateTime('2023-01-01');
-$b = new DateTimeImmutable('yesterday');
+$b = new DateTimeImmutable('2023-12-31 23:59:59');
+$c = new DateTimeImmutable($dateVariable);
 ```
 
 **Recommended fix:** inject `Psr\Clock\ClockInterface` and call `$clock->now()`:

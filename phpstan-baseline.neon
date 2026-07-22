@@ -1,6 +1,12 @@
 parameters:
 	ignoreErrors:
 		-
+			message: '#^Avoid using new DateTime\(''\+1 day''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
 			message: '#^Avoid using new DateTime\(''now''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
 			identifier: clock.disallowDateTimeNow
 			count: 1
@@ -13,7 +19,103 @@ parameters:
 			path: tests/Rules/Psr/fixtures/psr20.php
 
 		-
+			message: '#^Avoid using new DateTimeImmutable\(''\+0 seconds''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''\-2 weeks''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''0 days''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''2 days ago''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''friday''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''in 3 weeks''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''last day of this month''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''monday 14\:00\:00''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''next Monday''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''noon''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
 			message: '#^Avoid using new DateTimeImmutable\(''now''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''today midnight''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''today''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''tomorrow 12\:00''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''tomorrow''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''yesterday noon''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
+			message: '#^Avoid using new DateTimeImmutable\(''yesterday''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
 			identifier: clock.disallowDateTimeNow
 			count: 1
 			path: tests/Rules/Psr/fixtures/psr20.php
@@ -25,15 +127,21 @@ parameters:
 			path: tests/Rules/Psr/fixtures/psr20.php
 
 		-
-			message: '#^Avoid using time\(\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
-			identifier: clock.disallowTimeFunctions
-			count: 2
-			path: tests/Rules/Psr/fixtures/psr20_functions.php
+			message: '#^Instantiating DateTimeImmutable with in 3 weeks produces an error\: The timezone could not be found in the database$#'
+			identifier: new.dateTimeImmutable
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
 
 		-
 			message: '#^Avoid using date\(\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
 			identifier: clock.disallowTimeFunctions
 			count: 4
+			path: tests/Rules/Psr/fixtures/psr20_functions.php
+
+		-
+			message: '#^Avoid using time\(\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowTimeFunctions
+			count: 2
 			path: tests/Rules/Psr/fixtures/psr20_functions.php
 
 		-
