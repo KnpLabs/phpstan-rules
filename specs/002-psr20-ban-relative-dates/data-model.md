@@ -26,18 +26,21 @@ The complete set of patterns, grouped for clarity:
 
 | Pattern | Matches |
 |---------|---------|
-| `/^now$/i` | `now`, `NOW`, `Now` |
-| `/^yesterday$/i` | `yesterday`, `YESTERDAY` |
-| `/^today$/i` | `today`, `TODAY` |
-| `/^tomorrow$/i` | `tomorrow`, `TOMORROW` |
-| `/^noon$/i` | `noon`, `NOON` |
-| `/^midnight$/i` | `midnight`, `MIDNIGHT` |
+| `/^(now\|yesterday\|today\|tomorrow\|noon\|midnight)\b/i` | `now`, `tomorrow`, `noon`, `TOMORROW`, `yesterday noon`, `today midnight` |
+
+> **Why `\b` instead of `$`**: Using a word boundary rather than end-of-string allows the pattern
+> to also catch compound modifier strings such as `'yesterday noon'` or `'tomorrow 12:00'`, where
+> a relative keyword is followed by a time component. PHP's datetime parser treats these as
+> relative expressions. The six keywords are consolidated into one pattern for efficiency.
 
 ### Standalone Day Names
 
 | Pattern | Matches |
 |---------|---------|
-| `/^(monday\|tuesday\|wednesday\|thursday\|friday\|saturday\|sunday)$/i` | `Monday`, `friday`, `TUESDAY` |
+| `/^(monday\|tuesday\|wednesday\|thursday\|friday\|saturday\|sunday)\b/i` | `Monday`, `friday`, `TUESDAY`, `monday 14:00:00` |
+
+> **Why `\b` instead of `$`**: Same rationale as Keywords — day names followed by a time
+> component (e.g., `'monday 14:00:00'`) are relative and must be caught.
 
 ### Relative Qualifiers
 

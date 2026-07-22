@@ -43,6 +43,12 @@ parameters:
 			path: tests/Rules/Psr/fixtures/psr20.php
 
 		-
+			message: '#^Avoid using new DateTimeImmutable\(''TOMORROW''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
 			message: '#^Avoid using new DateTimeImmutable\(''friday''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
 			identifier: clock.disallowDateTimeNow
 			count: 1

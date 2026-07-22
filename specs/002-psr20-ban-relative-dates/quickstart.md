@@ -25,7 +25,7 @@ docker compose run --rm php composer install
 
 ### Scenario 1: Relative date strings are flagged
 
-**Setup**: The updated test fixture (`tests/Rules/Psr/fixtures/psr20.php`) must include PHP code with relative date string literals such as `'tomorrow'`, `'+1 day'`, `'yesterday'`, `'next Monday'`.
+**Setup**: The updated test fixture (`tests/Rules/Psr/fixtures/psr20.php`) must include PHP code with relative date string literals such as `'tomorrow'`, `'+1 day'`, `'yesterday'`, `'next Monday'`, and compound modifiers like `'yesterday noon'` and `'monday 14:00:00'`.
 
 **Run**:
 

@@ -33,3 +33,5 @@ $y = new DateTimeImmutable('yesterday noon');
 $z = new DateTimeImmutable('today midnight');
 $aa = new DateTimeImmutable('tomorrow 12:00');
 $bb = new DateTimeImmutable('monday 14:00:00');
+$cc = new DateTimeImmutable('TOMORROW');
+$dd = new \stdClass();

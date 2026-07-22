@@ -172,3 +172,12 @@ Work strictly in phase order (1 → 2 → 3 → 4 → 5 → 6). No parallel work
 - Verify line numbers in the fixture match expected-error line numbers in the test before each run
 - `'yesterday'` is on line 10 of the existing fixture and currently does NOT error — after T003 (Foundational), it will error; T005 must add this to the expected-error array
 - Run `composer cs-check` after any PHP file change to catch formatting issues early
+
+---
+
+## Phase 7: Convergence
+
+- [x] T013 [US1] Add `new DateTimeImmutable('TOMORROW')` to `tests/Rules/Psr/fixtures/psr20.php` (append after line 35) and add the corresponding expected error assertion in `tests/Rules/Psr/Psr20RuleTest.php`; then regenerate `phpstan-baseline.neon` and run `docker compose run --rm php vendor/bin/phpunit tests/Rules/Psr/Psr20RuleTest.php` — verifies US1/AC6 (uppercase relative string is flagged) (partial)
+- [x] T014 [P] Update `specs/002-psr20-ban-relative-dates/data-model.md` — replace the individual `$`-anchored per-keyword patterns (e.g., `/^now$/i`, `/^tomorrow$/i`) and the standalone day-name pattern with their consolidated `\b` equivalents that match the implementation; add a "Compound Modifiers" note explaining why `\b` is used instead of `$` (partial)
+- [x] T015 [P] Add a non-`DateTime`/`DateTimeImmutable` class constructor line to `tests/Rules/Psr/fixtures/psr20.php` (e.g., `$cc = new \stdClass();`) and confirm no expected error for it in `tests/Rules/Psr/Psr20RuleTest.php`; verifies the contract's "Non-DateTime/DateTimeImmutable class MUST NOT trigger" case (partial)
+- [x] T016 [P] Update `specs/002-psr20-ban-relative-dates/quickstart.md` Scenario 1 — add at least one compound modifier example (`'yesterday noon'` or `'monday 14:00:00'`) to the example list so the guide reflects the full implemented behavior (partial)
