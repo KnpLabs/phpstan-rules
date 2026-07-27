@@ -67,6 +67,12 @@ parameters:
 			path: tests/Rules/Psr/fixtures/psr20.php
 
 		-
+			message: '#^Avoid using new DateTimeImmutable\(''mon''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
+			identifier: clock.disallowDateTimeNow
+			count: 1
+			path: tests/Rules/Psr/fixtures/psr20.php
+
+		-
 			message: '#^Avoid using new DateTimeImmutable\(''monday 14\:00\:00''\) directly\. Prefer using \\Psr\\Clock\\ClockInterface instead\.$#'
 			identifier: clock.disallowDateTimeNow
 			count: 1

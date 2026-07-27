@@ -65,6 +65,7 @@ final readonly class Psr20Rule implements Rule
         $patterns = [
             '/^(now|yesterday|today|tomorrow|noon|midnight)\b/i',
             '/^(monday|tuesday|wednesday|thursday|friday|saturday|sunday)\b/i',
+            '/^(mon|tue|wed|thu|fri|sat|sun)\b/i',
             '/^(next|last|previous|this)\s+/i',
             '/^[+-]\d+\s+(second|minute|hour|day|week|month|year)s?/i',
             '/^\d+\s+(second|minute|hour|day|week|month|year)s?\s*$/i',

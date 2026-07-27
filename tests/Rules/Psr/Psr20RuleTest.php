@@ -43,6 +43,7 @@ final class Psr20RuleTest extends RuleTestCase
             ["Avoid using new DateTimeImmutable('tomorrow 12:00') directly. Prefer using \Psr\Clock\ClockInterface instead.", 34],
             ["Avoid using new DateTimeImmutable('monday 14:00:00') directly. Prefer using \Psr\Clock\ClockInterface instead.", 35],
             ["Avoid using new DateTimeImmutable('TOMORROW') directly. Prefer using \Psr\Clock\ClockInterface instead.", 36],
+            ["Avoid using new DateTimeImmutable('mon') directly. Prefer using \Psr\Clock\ClockInterface instead.", 37],
         ]);
     }
 }
